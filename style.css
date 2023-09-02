@@ -24,6 +24,17 @@ time, mark, audio, video {
     /* ... other reset styles ... */
 }
 
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
 /* Set font size for responsive design */
 html {
     font-size: 15px;
