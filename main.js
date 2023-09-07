@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Event listener to open the Pokémon modal for a specific collection
     collectionsList.addEventListener("click", (event) => {
-        if (event.target.classList.contains("collection")) {
-            currentCollection = event.target.getAttribute("data-collection");
+        if (event.target.classList.contains("add-pokemon-btn")) {
+            currentCollection = event.target.parentElement.getAttribute("data-collection");
             pokemonModal.classList.add("active");
         }
     });
@@ -94,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Close modals when clicking outside the content area
     document.addEventListener("click", (event) => {
-        if (!event.target.closest(".modal-content") && event.target !== addPokemonBtn) {
+        if (!event.target.closest(".modal-content") && !
+        event.target.closest(".add-pokemon-btn")) {
             closeModal(collectionModal);
             closeModal(pokemonModal);
         }
