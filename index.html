@@ -9,12 +9,21 @@
 <body>
     
     <nav class="sidebar">
-     <h1>The Okwurt Box</h1>   <!-- Navigation items and collections list here -->
-     <br>
-     <h2>Collections</h2>
-     <ul class="collections">
-         <a href="Origin Dex/">Origin Dex</a>
-         <a href="Shiny Living Dex/">Shiny Living Dex</a>
+        <h1>The Okwurt Box</h1>
+        <br>
+        <h2>Collections</h2>
+        <ul class="collections">
+            <li class="collection" data-collection="origin-dex">
+                Origin Dex
+                <button class="add-pokemon-btn">Add Pokémon</button>
+                <div class="pokemon-container"></div>
+            </li>
+            <li class="collection" data-collection="shiny-living-dex">
+                Shiny Living Dex
+                <button class="add-pokemon-btn">Add Pokémon</button>
+                <div class="pokemon-container"></div>
+            </li>
+        </ul>
     </nav>
     <article class="content">
         <!-- Main content and modals here -->
@@ -27,7 +36,17 @@
 
     <!-- Modal for adding a Pokémon -->
     <div id="pokemon-modal" class="modal">
-        <!-- Pokémon form content here -->
+        <div class="modal-content">
+            <form id="pokemon-form">
+                <label for="pokemon-name">Name:</label>
+                <input type="text" id="pokemon-name" name="pokemon-name" required>
+                <label for="pokemon-image">Image URL:</label>
+                <input type="text" id="pokemon-image" name="pokemon-image" required>
+                <label for="pokemon-type">Type:</label>
+                <input type="text" id="pokemon-type" name="pokemon-type" required>
+                <input type="submit" value="Add Pokémon">
+            </form>
+        </div>
     </div>
 
     <script src="main.js"></script>
