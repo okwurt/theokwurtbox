@@ -1,0 +1,36 @@
+Displaying alternate forms on a detailed card view can be handled by creating a section within the card dedicated to showcasing these forms. Each form can be displayed as a list item, and possibly, you could show a small thumbnail image of each form next to its name. Here's a way you might structure the HTML to include a section for alternate forms:
+
+1. **Creating a Section for Alternate Forms:**
+```html
+<div class="pokemon-forms">
+    <h3>Alternate Forms</h3>
+    <ul id="alternate-forms-list">
+        <!-- Form items will be populated here -->
+    </ul>
+</div>
+```
+
+2. **Populating the Alternate Forms Section:**
+```javascript
+function displayAlternateForms(forms) {
+    const formsList = document.getElementById('alternate-forms-list');
+    formsList.innerHTML = '';  // Clear any existing form items
+    
+    forms.forEach(form => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <img src="path_to_images/${form.formName}.png" alt="${form.displayName}">
+            <span>${form.displayName}</span>
+        `;
+        formsList.appendChild(listItem);
+    });
+}
+```
+
+In the `displayAlternateForms` function:
+
+- We first clear any existing items in the `alternate-forms-list` element.
+- We then loop through the `forms` array, creating a new list item (`li`) element for each form.
+- Each list item contains an image and a span element to show the form's name. The `src` attribute of the `img` element assumes that you have images for each form saved with filenames matching the `formName` property of each form object, and all stored in a directory named `path_to_images`. The `alt` attribute provides alternative text describing the image, which is useful for accessibility.
+
+When you have the detailed information of a Pokémon, you can call `displayAlternateForms(pokemon.forms)` to populate the alternate forms section.
