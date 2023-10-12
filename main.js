@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const pokemonModal = document.getElementById("pokemon-modal");
     const collectionsList = document.querySelector(".collections");
     const pokemonForm = document.getElementById("pokemon-form");
+    const collectionName = document.querySelector(".data-collection");
 
      // Check which element is null
      if (!collectionModal) console.error("collectionModal is null");
@@ -13,13 +14,10 @@ document.addEventListener("DOMContentLoaded", function() {
      if (!pokemonForm) console.error("pokemonForm is null");
  
 
-    let currentCollection = null; // Variable to store the currently selected collection
-
-    // Data structure to represent collections
-    let collectionsData = {
-        "origin-dex": [],
-        "shiny-living-dex": []
-    };
+    let collection = 
+    "data-collection" = collectionId;
+    ; // Variable to store the currently selected collection
+    let pokemon = null; // Variable to store the currently selected Pokémon
 
     // Function to close a modal
     function closeModal(modal) {
@@ -37,19 +35,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Handle Pokémon form submission
     pokemonForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        
-        const pokemon = {
-            name: event.target["pokemon-name"].value,
-            image: event.target["pokemon-image"].value,
-            type: event.target["pokemon-type"].value
-        };
 
-        addPokemonToCollection(currentCollection, pokemon);
+        addPokemonToCollection(collection, pokemon);
         closeModal(pokemonModal);
     });
 
     function addPokemonToCollection(collectionId, pokemon) {
-        collectionsData[collectionId].push(pokemon);
+        collections[collectionId].push(pokemon);
         renderCollection(collectionId);
     }
 
@@ -57,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const collectionElement = document.querySelector(`.collection[data-collection="${collectionId}"] .pokemon-container`);
         collectionElement.innerHTML = ''; // Clear current content
 
-        collectionsData[collectionId].forEach(pokemon => {
+        collections[collectionId].forEach(pokemon => {
             const pokemonCard = createPokemonCard(pokemon);
             collectionElement.appendChild(pokemonCard);
         });
@@ -68,8 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
         pokemonCard.classList.add("pokemon-card");
 
         const img = document.createElement("img");
-        img.src = pokemon.image;
+        img.src = `https://raw.githubusercontent.com/okwurt/dextracker/main/sprites/games/home/normal/${name}.png`;
         img.alt = pokemon.name;
+
         pokemonCard.appendChild(img);
 
         const name = document.createElement("span");
@@ -83,14 +76,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.addEventListener("click", () => {
-            const index = collectionsData[currentCollection].indexOf(pokemon);
-            collectionsData[currentCollection].splice(index, 1);
+            const index = collections[collectionId].indexOf(pokemon);
+            collection[collectionId].splice(index, 1);
             renderCollection(currentCollection);
         });
         pokemonCard.appendChild(deleteBtn);
 
         return pokemonCard;
     }
+
+
 
     // Close modals when clicking outside the content area
     document.addEventListener("click", (event) => {
