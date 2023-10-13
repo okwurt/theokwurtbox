@@ -18,7 +18,7 @@
                 <button class="add-pokemon-btn">Add Pokémon</button>
                 <div class="pokemon-container"></div>
             </li>
-            <li class="data-collection" id="shiny-living-dex">
+            <li class="data-collection" id="shiny-dex">
                 Shiny Living Dex
                 <button class="add-pokemon-btn">Add Pokémon</button>
                 <div class="pokemon-container"></div>
@@ -26,26 +26,48 @@
         </ul>
     </nav>
     <article class="content">
-        <!-- Main content and modals here -->
+        <div class="card-container">
+            
+        </div>
     </article>
 
-    <!-- Modal for adding a collection -->
-    <div id="collection-modal" class="modal">
-        <!-- Collection form content here -->
-    </div>
-
     <!-- Modal for adding a Pokémon -->
-    <div id="pokemon-modal" class="modal">
+    <div class="modal" id="add-pokemon-modal" ">
         <div class="modal-content">
             <form id="pokemon-form">
-                <label for="pokemon-name">Name:</label>
-                <input type="text" id="pokemon-name" name="pokemon-name" required>
+                <select id="pokemon-dropdown">
+                    <option value="">Select a Pokémon</option>
+                </select>
                 <br>
-                <input type="submit" value="Add Pokémon">
+                <button id="add-details-btn">Next</button>
             </form>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <div class="modal" id="add-details-modal">
+        <div class="modal-content">
+            <form id="pokemon-form">
+                <label for="pokemon-nickname">Nickname:</label>
+                <input type="text" id="pokemon-nickname" name="pokemon-nickname">
+                <br>
+                <select id="gender-dropdown">
+                    <option value="male">♂</option>
+                    <option value="female">♀</option>
+                    <option value="genderless">Genderless</option>
+                </select>
+                <label for="pokemon-level">Level:</label>
+                <input type="number" id="pokemon-level" name="pokemon-level">
+                <br>
+                <label for="pokemon-nature">Nature:</label>
+                <select id="nature-dropdown">
+                    <option value="">Select Nature</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <script src="js/pokemonData.js"></script>
+    <script src="js/natures.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/main.js"></script> 
 </body>
 </html>

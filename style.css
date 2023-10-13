@@ -54,6 +54,11 @@ html {
 .collections {
     margin-top: 1rem;
     padding: 0;
+    text-decoration: none;
+}
+
+.collections a {
+    margin-bottom: 0.5rem;
 }
 
 .data-collection {
@@ -73,6 +78,14 @@ html {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+}
+
+.modal {
+    display: none;
+}
+
+.modal.hidden {
+    display: none;
 }
 
 .modal.active {
